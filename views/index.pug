@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    header
+        div
+            div.logo
+                img(src="images/Food_Blog_Logo.webp")
+            div.social
+                a(class="fa fa-facebook" href="#")
+                a(class="fa fa-instagram" href="#")
+                a(class="fa fa-twitter" href="#")
+        nav
+            ul
+                li
+                    a(href='/register') Register
+                li
+                    a(href='/login') Login
+    main
+        if path === "/register"
+            include register.pug
+        else if path === "/thankyou"
+            include thankyou.pug
+        else 
+            h3.form-title Welcome back! Please Login:
+            form(action="/login" method="POST" class="form-login")
+                label Username:
+                input(
+                    type="text"
+                    name="username"
+                    class="form-control"
+                )
+                label Password:
+                input(
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    required
+                )
+                input(
+                    type="submit" 
+                    value="Login"
+                    class="btn btn-lg btn-primary btn-block"
+                    required
+                )
+    footer
+        | &copy; Copyright 2022 Miao Shi
